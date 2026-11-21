@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pizza Perks: shop like you already do, the cashback buys the pizza</title>
+<meta name="description" content="Buy online gift cards for shops you already use. Cashback builds your reward. Spend it on pizza from our London kitchens. Coming soon to iPhone and Android.">
+<link rel="canonical" href="https://yourpizzaperks.com/">
+<meta name="theme-color" content="#002B24">
+<link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pizza Perks">
+<meta property="og:title" content="Pizza Perks">
+<meta property="og:description" content="Shop like you already do. The cashback buys the pizza.">
+<meta property="og:url" content="https://yourpizzaperks.com/">
+<meta property="og:image" content="https://yourpizzaperks.com/assets/img/icon-512.png">
+<link rel="preload" href="assets/fonts/dm-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Body type: DM Sans, the app's own, served from this site (SIL Open Font
+   Licence, see assets/fonts/DM-Sans-OFL.txt). Headings are the brand's
+   display face drawn as outlines: see _build/build.py. */
+@font-face{font-family:"DM Sans";font-weight:400;font-display:swap;src:url(assets/fonts/dm-sans-400.woff2) format("woff2")}
+@font-face{font-family:"DM Sans";font-weight:500;font-display:swap;src:url(assets/fonts/dm-sans-500.woff2) format("woff2")}
+@font-face{font-family:"DM Sans";font-weight:700;font-display:swap;src:url(assets/fonts/dm-sans-700.woff2) format("woff2")}
+
+/* The app's seven colours (PizzaPerksRN/src/theme.ts). Nothing else is used. */
+:root{
+  --green:#002B24; --green-lift:#0A4034; --rust:#9E401A;
+  --yellow:#F5BD54; --yellow-lift:#FFD07F;
+  --beige-warm:#E8DBCC; --beige:#F2EBDE; --surface:#FBF7F0;
+  --muted:#4A6660; --warm:#5A4638; --line:rgba(0,43,36,.14);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--beige);color:var(--green);font:400 1.0625rem/1.6 "DM Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+a{color:inherit}
+h1,h2,h3,p,ol,ul{margin:0}
+ol,ul{padding:0;list-style:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.vh{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip{position:absolute;left:12px;top:-60px;background:var(--yellow);color:var(--green);padding:10px 16px;border-radius:999px;font-weight:700;z-index:5}
+.skip:focus{top:12px}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px;border-radius:6px}
+.on-light :focus-visible{outline-color:var(--rust)}
+
+/* Lettering: a row of word-boxes that wraps like text. --h is the box height
+   for this heading, set by the build from the letters it uses. */
+.st{display:flex;flex-wrap:wrap;gap:var(--g) .24em}
+.st .w{flex:none;height:var(--h);fill:currentColor;overflow:visible}
+.center .st{justify-content:center}
+
+/* ---------- top: header and hero on the app's dark green ---------- */
+.top{background:linear-gradient(rgba(0,43,36,.5),rgba(0,43,36,.5)),var(--green) url(assets/img/pattern-green.png) center/cover;color:var(--beige);border-radius:0 0 36px 36px}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0}
+.bar img{display:block;height:30px;width:auto}
+.bar nav{display:flex;gap:26px;font-weight:500;font-size:.97rem}
+.bar nav a{text-decoration:none;opacity:.86}
+.bar nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--yellow)}
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:40px;align-items:center;padding:44px 0 84px}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;border:1.5px solid rgba(245,189,84,.5);color:var(--yellow);border-radius:999px;padding:7px 15px;font-weight:700;font-size:.76rem;letter-spacing:.09em;text-transform:uppercase}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--yellow)}
+h1{font-size:clamp(2.3rem,6vw,4.25rem);margin-top:24px;color:var(--yellow)}
+h1 .l2{display:block;margin-top:.2em;color:var(--beige)}
+.lead{margin-top:26px;max-width:33rem;font-size:clamp(1.06rem,1.5vw,1.22rem);line-height:1.6;color:rgba(242,235,222,.88)}
+.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 28px;border-radius:999px;font-size:1.02rem;text-decoration:none;border:1.5px solid transparent;transition:background-color .15s,border-color .15s}
+.btn-yellow{background:var(--yellow);color:var(--green)}
+.btn-yellow:hover{background:var(--yellow-lift)}
+.btn-ghost{border-color:rgba(242,235,222,.4);color:var(--beige)}
+.btn-ghost:hover{border-color:var(--beige)}
+.phone{width:min(292px,70vw);margin:0 auto;padding:9px;border-radius:44px;background:#00130F;box-shadow:0 0 0 1.5px rgba(245,189,84,.28),0 34px 70px rgba(0,0,0,.42);transform:rotate(2.5deg)}
+.phone img{display:block;width:100%;height:auto;border-radius:36px}
+
+/* ---------- sections on beige ---------- */
+.sec{padding:84px 0 0}
+.sec-head{max-width:40rem;margin:0 auto;text-align:center}
+h2{font-size:clamp(1.9rem,4.4vw,2.9rem)}
+.sec-head p{margin-top:16px;color:var(--muted);font-size:1.08rem}
+
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:44px}
+.step{background:var(--surface);border-radius:22px;padding:26px 24px 28px;box-shadow:0 2px 10px rgba(0,43,36,.05)}
+.num{display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:var(--yellow);font-size:1.3rem}
+.step h3{margin-top:20px;font-size:1.34rem}
+.step p{margin-top:12px;color:var(--muted);font-size:1rem;line-height:1.55}
+
+/* the app's yellow card */
+.kitchens{margin-top:44px;background:var(--yellow);border-radius:28px;padding:46px 40px 40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:36px 48px;align-items:center}
+.kitchens h2{font-size:clamp(1.8rem,3.8vw,2.6rem)}
+.kitchens .say{margin-top:16px;font-size:1.08rem;max-width:26rem}
+.brands{display:flex;justify-content:space-between;gap:14px;text-align:center}
+.brands li{flex:1;font-weight:700;font-size:.98rem}
+.brands img{display:block;width:min(104px,100%);height:auto;aspect-ratio:1;margin:0 auto 12px;border-radius:50%;box-shadow:0 0 0 1.5px rgba(0,43,36,.16)}
+.areas{grid-column:1/-1;border-top:1.5px solid rgba(0,43,36,.16);padding-top:28px}
+.areas p{font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+.chips li{background:var(--beige);color:var(--rust);border-radius:999px;padding:7px 15px;font-weight:700;font-size:.93rem}
+.areas .note{margin-top:18px;font-weight:400;font-size:.97rem}
+
+.faq{max-width:46rem;margin:40px auto 0}
+.faq details{background:var(--surface);border-radius:18px;box-shadow:0 2px 10px rgba(0,43,36,.05)}
+.faq details+details{margin-top:12px}
+.faq summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;cursor:pointer;font-weight:700;font-size:1.06rem;list-style:none;border-radius:18px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:10px;height:10px;border-right:2.5px solid var(--rust);border-bottom:2.5px solid var(--rust);transform:rotate(45deg) translate(-2px,-2px);transition:transform .15s}
+.faq details[open] summary::after{transform:rotate(225deg) translate(-2px,-2px)}
+.faq details p{padding:0 24px 22px;color:var(--muted)}
+
+.soon{margin-top:84px;background:linear-gradient(rgba(0,43,36,.4),rgba(0,43,36,.4)),var(--green) url(assets/img/pattern-green.png) center/cover;color:var(--beige);border-radius:28px;padding:56px 28px;text-align:center}
+.soon h2{color:var(--yellow)}
+.soon p{margin:18px auto 0;max-width:34rem;font-size:1.1rem;color:rgba(242,235,222,.9)}
+.soon a{color:var(--yellow);font-weight:700;text-underline-offset:4px;white-space:nowrap}
+
+footer{padding:56px 0 48px;color:var(--muted);font-size:.93rem;line-height:1.65}
+.foot{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:28px 48px;border-top:1.5px solid var(--line);margin-top:64px;padding-top:36px}
+.foot img{display:block;height:40px;width:auto;margin-bottom:18px;border-radius:9px}
+.foot ul{display:grid;gap:8px;justify-items:start}
+.foot ul a{color:var(--green);font-weight:700;text-underline-offset:4px}
+.small{margin-top:28px;font-size:.86rem}
+
+@media (max-width:1000px){
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;gap:52px;padding:26px 0 64px;text-align:center}
+  .hero .st{justify-content:center}
+  h1 .st{max-width:8.2em;margin-inline:auto}
+  .lead{margin-inline:auto}
+  .cta{justify-content:center}
+  .kitchens{grid-template-columns:1fr;padding:36px 24px 30px}
+  .foot{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .bar nav{display:none}
+  .bar{justify-content:center;padding:20px 0 8px}
+  .sec{padding-top:64px}
+  .steps{grid-template-columns:1fr;margin-top:32px}
+  .soon{margin-top:64px;padding:44px 22px}
+  .btn{flex:1 1 100%}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#how">Skip to how it works</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>{{glyphs}}</defs></svg>
+
+<div class="top">
+  <div class="wrap">
+    <header class="bar">
+      <a href="/" aria-label="Pizza Perks, home"><img src="assets/img/logo.svg" width="569" height="89" alt="Pizza Perks"></a>
+      <nav aria-label="On this page">
+        <a href="#how">How it works</a>
+        <a href="#kitchens">Our kitchens</a>
+        <a href="#questions">Good to know</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <div>
+        <p class="eyebrow">Coming soon to iPhone and Android</p>
+        <h1><span class="l1">{{st:Shop like you already do.}}</span> <span class="l2">{{st:The cashback buys the pizza.}}</span></h1>
+        <p class="lead">Buy online gift cards for shops you already use. Cashback builds your reward. Spend it on pizza from our London kitchens.</p>
+        <div class="cta">
+          <a class="btn btn-yellow" href="#how">{{st:HOW IT WORKS|How it works}}</a>
+          <a class="btn btn-ghost" href="#kitchens">{{st:OUR KITCHENS|Our kitchens}}</a>
+        </div>
+      </div>
+      <div class="phone">
+        <img src="assets/img/app-home.webp" width="780" height="1688" alt="The Pizza Perks app’s Home screen: a reward of £11.88, and a note that the next free pizza is £4.12 away.">
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="on-light">
+  <section class="sec" id="how">
+    <div class="wrap">
+      <div class="sec-head center">
+        <h2>{{st:How Pizza Perks works}}</h2>
+        <p>The app is free, with no subscription and no fees.</p>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <div class="num" aria-hidden="true">{{st:1}}</div>
+          <h3>{{st:Buy an online gift card}}</h3>
+          <p>Pick a shop you already use and choose an amount. Nothing comes in the post, and you get the full value to spend at that shop.</p>
+        </li>
+        <li class="step">
+          <div class="num" aria-hidden="true">{{st:2}}</div>
+          <h3>{{st:Cashback builds your reward}}</h3>
+          <p>Each retailer shows the cashback it pays before you buy. It joins your reward as soon as your gift card arrives, normally within seconds.</p>
+        </li>
+        <li class="step">
+          <div class="num" aria-hidden="true">{{st:3}}</div>
+          <h3>{{st:Your pizza fills up, slice by slice}}</h3>
+          <p>Every gift card fills it a little more. Your reward doesn’t expire, and you can spend it on any order, however much or little you have.</p>
+        </li>
+        <li class="step">
+          <div class="num" aria-hidden="true">{{st:4}}</div>
+          <h3>{{st:Your reward pays for the pizza}}</h3>
+          <p>Choose a London kitchen and order for pickup or delivery. Your reward comes off the bill, delivery included, and anything left is paid by card.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec" id="kitchens">
+    <div class="wrap">
+      <div class="kitchens">
+        <div>
+          <h2>{{st:Pizza from our London kitchens}}</h2>
+          <p class="say">Spend your reward at any of our three pizzerias, for pickup or delivery.</p>
+        </div>
+        <ul class="brands">
+          <li><img src="assets/img/basilico.png" width="256" height="256" alt="" loading="lazy">Basilico Pizza</li>
+          <li><img src="assets/img/protein.png" width="256" height="256" alt="" loading="lazy">Protein Pizza</li>
+          <li><img src="assets/img/goat.png" width="256" height="256" alt="" loading="lazy">Goat Pizza</li>
+        </ul>
+        <div class="areas">
+          <p>You’ll find us in</p>
+          <ul class="chips">
+            <li>Commercial Road</li>
+            <li>Crouch End</li>
+            <li>East Sheen</li>
+            <li>Finchley</li>
+            <li>Fulham Road</li>
+            <li>Hampstead</li>
+            <li>Islington</li>
+            <li>Lavender Hill</li>
+            <li>Marylebone</li>
+            <li>Tower Bridge</li>
+          </ul>
+          <p class="note">Pizza Perks kitchens are in London for now, so that is where your reward can be spent.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="questions">
+    <div class="wrap">
+      <div class="sec-head center">
+        <h2>{{st:Good to know}}</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Does it cost anything to use?</summary>
+          <p>No. The app is free, with no subscription and no fees. You pay the value of the gift card you buy, nothing on top, and you get the full value to spend at that retailer.</p>
+        </details>
+        <details>
+          <summary>How much cashback will I earn?</summary>
+          <p>Each retailer pays its own rate. It is shown before you buy, and once you choose an amount the app shows what you’ll earn back, before you pay.</p>
+        </details>
+        <details>
+          <summary>Are the gift cards genuine?</summary>
+          <p>Yes. Each gift card is made new, for you, when your payment goes through. It is for the full amount you paid, and it is spent like any other gift card from that retailer, under the retailer’s own terms.</p>
+        </details>
+        <details>
+          <summary>Does my reward expire?</summary>
+          <p>No. Your reward doesn’t expire, and there’s no deadline for spending it. It stays on your account for as long as the account is open.</p>
+        </details>
+        <details>
+          <summary>Can I take my reward as cash?</summary>
+          <p>No. Your reward is a discount on food from our kitchens. It isn’t money, so it can’t be withdrawn, exchanged for cash or moved to another account.</p>
+        </details>
+        <details>
+          <summary>Can I use Pizza Perks if I don’t live in London?</summary>
+          <p>Partly. You can buy gift cards and earn cashback wherever you live, but your reward can only be spent at our London kitchens for now: you collect from one, or have your order delivered if you’re inside its delivery area.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="soon center" aria-labelledby="soon-h">
+      <h2 id="soon-h">{{st:The app is on its way…}}</h2>
+      <p>Pizza Perks is coming soon to iPhone and Android.</p>
+      <p>A question in the meantime? Email <a href="mailto:support@yourpizzaperks.com">support@yourpizzaperks.com</a></p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <img src="assets/img/logo-green.svg" width="668" height="188" alt="Pizza Perks">
+        <p>The Pizza Perks app is provided by Basilico Limited.<br>
+        Registered in England and Wales, company number 03518034.<br>
+        Registered office: Linden Building A 8-9 Regent Park, Booth Drive, Park Farm Industrial Estate, Wellingborough, Northamptonshire, England, NN8 6GR.<br>
+        VAT number GB 719 0604 45.</p>
+      </div>
+      <ul>
+        <li><a href="https://pizzaperks-backend-prod.fly.dev/terms">Terms and conditions</a></li>
+        <li><a href="https://pizzaperks-backend-prod.fly.dev/privacy">Privacy policy</a></li>
+        <li><a href="mailto:support@yourpizzaperks.com">support@yourpizzaperks.com</a></li>
+      </ul>
+    </div>
+    <p class="small">You must be 18 or over to use the app. © 2026 Basilico Limited.</p>
+  </div>
+</footer>
+</body>
+</html>

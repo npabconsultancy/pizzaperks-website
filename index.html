@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pizza Perks: shop like you already do, the cashback buys the pizza</title>
+<meta name="description" content="Buy online gift cards for shops you already use. Cashback builds your reward. Spend it on pizza from our London kitchens. Coming soon to iPhone and Android.">
+<link rel="canonical" href="https://yourpizzaperks.com/">
+<meta name="theme-color" content="#002B24">
+<link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pizza Perks">
+<meta property="og:title" content="Pizza Perks">
+<meta property="og:description" content="Shop like you already do. The cashback buys the pizza.">
+<meta property="og:url" content="https://yourpizzaperks.com/">
+<meta property="og:image" content="https://yourpizzaperks.com/assets/img/icon-512.png">
+<link rel="preload" href="assets/fonts/dm-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Body type: DM Sans, the app's own, served from this site (SIL Open Font
+   Licence, see assets/fonts/DM-Sans-OFL.txt). Headings are the brand's
+   display face drawn as outlines: see _build/build.py. */
+@font-face{font-family:"DM Sans";font-weight:400;font-display:swap;src:url(assets/fonts/dm-sans-400.woff2) format("woff2")}
+@font-face{font-family:"DM Sans";font-weight:500;font-display:swap;src:url(assets/fonts/dm-sans-500.woff2) format("woff2")}
+@font-face{font-family:"DM Sans";font-weight:700;font-display:swap;src:url(assets/fonts/dm-sans-700.woff2) format("woff2")}
+
+/* The app's seven colours (PizzaPerksRN/src/theme.ts). Nothing else is used. */
+:root{
+  --green:#002B24; --green-lift:#0A4034; --rust:#9E401A;
+  --yellow:#F5BD54; --yellow-lift:#FFD07F;
+  --beige-warm:#E8DBCC; --beige:#F2EBDE; --surface:#FBF7F0;
+  --muted:#4A6660; --warm:#5A4638; --line:rgba(0,43,36,.14);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--beige);color:var(--green);font:400 1.0625rem/1.6 "DM Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+a{color:inherit}
+h1,h2,h3,p,ol,ul{margin:0}
+ol,ul{padding:0;list-style:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.vh{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip{position:absolute;left:12px;top:-60px;background:var(--yellow);color:var(--green);padding:10px 16px;border-radius:999px;font-weight:700;z-index:5}
+.skip:focus{top:12px}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px;border-radius:6px}
+.on-light :focus-visible{outline-color:var(--rust)}
+
+/* Lettering: a row of word-boxes that wraps like text. --h is the box height
+   for this heading, set by the build from the letters it uses. */
+.st{display:flex;flex-wrap:wrap;gap:var(--g) .24em}
+.st .w{flex:none;height:var(--h);fill:currentColor;overflow:visible}
+.center .st{justify-content:center}
+
+/* ---------- top: header and hero on the app's dark green ---------- */
+.top{background:linear-gradient(rgba(0,43,36,.5),rgba(0,43,36,.5)),var(--green) url(assets/img/pattern-green.png) center/cover;color:var(--beige);border-radius:0 0 36px 36px}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0}
+.bar img{display:block;height:30px;width:auto}
+.bar nav{display:flex;gap:26px;font-weight:500;font-size:.97rem}
+.bar nav a{text-decoration:none;opacity:.86}
+.bar nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--yellow)}
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:40px;align-items:center;padding:44px 0 84px}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;border:1.5px solid rgba(245,189,84,.5);color:var(--yellow);border-radius:999px;padding:7px 15px;font-weight:700;font-size:.76rem;letter-spacing:.09em;text-transform:uppercase}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--yellow)}
+h1{font-size:clamp(2.3rem,6vw,4.25rem);margin-top:24px;color:var(--yellow)}
+h1 .l2{display:block;margin-top:.2em;color:var(--beige)}
+.lead{margin-top:26px;max-width:33rem;font-size:clamp(1.06rem,1.5vw,1.22rem);line-height:1.6;color:rgba(242,235,222,.88)}
+.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 28px;border-radius:999px;font-size:1.02rem;text-decoration:none;border:1.5px solid transparent;transition:background-color .15s,border-color .15s}
+.btn-yellow{background:var(--yellow);color:var(--green)}
+.btn-yellow:hover{background:var(--yellow-lift)}
+.btn-ghost{border-color:rgba(242,235,222,.4);color:var(--beige)}
+.btn-ghost:hover{border-color:var(--beige)}
+.phone{width:min(292px,70vw);margin:0 auto;padding:9px;border-radius:44px;background:#00130F;box-shadow:0 0 0 1.5px rgba(245,189,84,.28),0 34px 70px rgba(0,0,0,.42);transform:rotate(2.5deg)}
+.phone img{display:block;width:100%;height:auto;border-radius:36px}
+
+/* ---------- sections on beige ---------- */
+.sec{padding:84px 0 0}
+.sec-head{max-width:40rem;margin:0 auto;text-align:center}
+h2{font-size:clamp(1.9rem,4.4vw,2.9rem)}
+.sec-head p{margin-top:16px;color:var(--muted);font-size:1.08rem}
+
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:44px}
+.step{background:var(--surface);border-radius:22px;padding:26px 24px 28px;box-shadow:0 2px 10px rgba(0,43,36,.05)}
+.num{display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:var(--yellow);font-size:1.3rem}
+.step h3{margin-top:20px;font-size:1.34rem}
+.step p{margin-top:12px;color:var(--muted);font-size:1rem;line-height:1.55}
+
+/* the app's yellow card */
+.kitchens{margin-top:44px;background:var(--yellow);border-radius:28px;padding:46px 40px 40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:36px 48px;align-items:center}
+.kitchens h2{font-size:clamp(1.8rem,3.8vw,2.6rem)}
+.kitchens .say{margin-top:16px;font-size:1.08rem;max-width:26rem}
+.brands{display:flex;justify-content:space-between;gap:14px;text-align:center}
+.brands li{flex:1;font-weight:700;font-size:.98rem}
+.brands img{display:block;width:min(104px,100%);height:auto;aspect-ratio:1;margin:0 auto 12px;border-radius:50%;box-shadow:0 0 0 1.5px rgba(0,43,36,.16)}
+.areas{grid-column:1/-1;border-top:1.5px solid rgba(0,43,36,.16);padding-top:28px}
+.areas p{font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+.chips li{background:var(--beige);color:var(--rust);border-radius:999px;padding:7px 15px;font-weight:700;font-size:.93rem}
+.areas .note{margin-top:18px;font-weight:400;font-size:.97rem}
+
+.faq{max-width:46rem;margin:40px auto 0}
+.faq details{background:var(--surface);border-radius:18px;box-shadow:0 2px 10px rgba(0,43,36,.05)}
+.faq details+details{margin-top:12px}
+.faq summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;cursor:pointer;font-weight:700;font-size:1.06rem;list-style:none;border-radius:18px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:10px;height:10px;border-right:2.5px solid var(--rust);border-bottom:2.5px solid var(--rust);transform:rotate(45deg) translate(-2px,-2px);transition:transform .15s}
+.faq details[open] summary::after{transform:rotate(225deg) translate(-2px,-2px)}
+.faq details p{padding:0 24px 22px;color:var(--muted)}
+
+.soon{margin-top:84px;background:linear-gradient(rgba(0,43,36,.4),rgba(0,43,36,.4)),var(--green) url(assets/img/pattern-green.png) center/cover;color:var(--beige);border-radius:28px;padding:56px 28px;text-align:center}
+.soon h2{color:var(--yellow)}
+.soon p{margin:18px auto 0;max-width:34rem;font-size:1.1rem;color:rgba(242,235,222,.9)}
+.soon a{color:var(--yellow);font-weight:700;text-underline-offset:4px;white-space:nowrap}
+
+footer{padding:56px 0 48px;color:var(--muted);font-size:.93rem;line-height:1.65}
+.foot{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:28px 48px;border-top:1.5px solid var(--line);margin-top:64px;padding-top:36px}
+.foot img{display:block;height:40px;width:auto;margin-bottom:18px;border-radius:9px}
+.foot ul{display:grid;gap:8px;justify-items:start}
+.foot ul a{color:var(--green);font-weight:700;text-underline-offset:4px}
+.small{margin-top:28px;font-size:.86rem}
+
+@media (max-width:1000px){
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;gap:52px;padding:26px 0 64px;text-align:center}
+  .hero .st{justify-content:center}
+  h1 .st{max-width:8.2em;margin-inline:auto}
+  .lead{margin-inline:auto}
+  .cta{justify-content:center}
+  .kitchens{grid-template-columns:1fr;padding:36px 24px 30px}
+  .foot{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .bar nav{display:none}
+  .bar{justify-content:center;padding:20px 0 8px}
+  .sec{padding-top:64px}
+  .steps{grid-template-columns:1fr;margin-top:32px}
+  .soon{margin-top:64px;padding:44px 22px}
+  .btn{flex:1 1 100%}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#how">Skip to how it works</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><path id="g0" d="M225 794C134 794 88 773 22 725L0 910C71 945 125 961 220 961C433 961 514 880 514 762C514 661 448 600 318 562C209 530 182 508 182 476C182 441 214 427 276 427C338 427 395 441 475 478L513 316C431 276 361 260 274 260C96 260 7 328 7 457C7 545 53 607 186 644C294 675 332 703 332 740C332 782 283 794 225 794Z"/><path id="g1" d="M0 264V951H168V638C199 609 217 600 248 600C287 600 314 615 314 683V951H482V610C482 479 424 428 337 428C261 428 203 467 168 570V264Z"/><path id="g2" d="M524 694C524 525 425 428 262 428C98 428 0 525 0 694C0 863 98 961 262 961C425 961 524 864 524 694ZM162 694C162 619 196 578 262 578C327 578 362 619 362 694C362 770 327 811 262 811C196 811 162 770 162 694Z"/><path id="g3" d="M326 428C243 428 191 466 166 544L147 438H0V1139H168V847C192 926 244 961 325 961C455 961 524 870 524 695C524 520 455 428 326 428ZM265 811C203 811 168 770 168 694V636C176 605 211 578 263 578C328 578 362 619 362 694C362 770 328 811 265 811Z"/><path id="g4" d="M168 264H0V951H168Z"/><path id="g5" d="M0 951H168V438H0ZM85 410C150 410 184 379 184 314C184 250 150 218 85 218C17 218 -17 250 -17 314C-17 379 17 410 85 410Z"/><path id="g6" d="M168 264H0V951H168V738C175 738 184 737 191 737L307 951H497L353 682L350 683C428 652 475 601 475 539C475 472 422 428 339 428C255 428 201 472 168 570ZM302 629C302 672 208 694 168 694V638C198 610 221 600 254 600C286 600 302 610 302 629Z"/><path id="g7" d="M457 586C457 485 387 428 260 428C97 428 0 521 0 688C0 861 95 961 248 961C338 961 387 946 445 904L413 760C368 799 322 815 270 815C218 815 184 794 168 753C373 749 457 697 457 586ZM158 689C159 608 190 567 249 567C282 567 307 581 307 615C307 661 259 689 168 689Z"/><path id="g8" d="M466 438H302L226 773L144 438H-40L150 990C125 996 109 999 94 999C61 999 22 987 12 972L36 1127C56 1139 92 1149 125 1149C230 1149 277 1057 338 857Z"/><path id="g9" d="M0 438V779C0 910 57 961 141 961C215 961 271 921 305 816L325 951H472V438H304V752C276 780 260 789 230 789C192 789 168 774 168 706V438Z"/><path id="g10" d="M0 829C0 910 53 961 137 961C198 961 247 933 280 879C298 932 338 961 398 961C423 961 448 956 470 944L501 786C486 792 473 795 462 795C453 795 445 793 437 790V677C437 505 372 428 217 428C147 428 87 443 13 485L45 648C87 608 131 592 176 592C222 592 249 609 261 648C95 656 0 721 0 829ZM268 802C268 808 269 814 269 821C255 834 241 841 222 841C194 841 172 826 172 787C172 733 210 702 268 700Z"/><path id="g11" d="M148 438H0V951H169V670L171 671C257 622 327 612 371 612L340 428C262 428 202 470 168 594Z"/><path id="g12" d="M356 542C332 463 281 428 200 428C69 428 0 519 0 693C0 869 69 961 199 961C282 961 332 923 357 846L377 951H525V264H356ZM356 753C348 784 313 811 261 811C197 811 162 770 162 694C162 619 197 578 259 578C322 578 356 619 356 694Z"/><path id="g13" d="M91 962C152 962 183 932 183 873C183 815 152 785 91 785C31 785 0 815 0 873C0 932 31 962 91 962Z"/><path id="g14" d="M168 951H339V420L507 424V270H0V424L168 420Z"/><path id="g15" d="M275 578C311 578 354 596 392 629L424 485C366 443 320 428 245 428C91 428 0 521 0 688C0 861 91 961 237 961C324 961 370 946 428 904L396 760C352 796 310 811 264 811C197 811 162 770 162 694C162 617 199 578 275 578Z"/><path id="g16" d="M178 807C115 807 72 791 31 751L0 914C56 947 112 961 191 961C355 961 419 899 419 809C419 729 369 683 273 658C185 633 164 624 164 607C164 587 198 580 238 580C299 580 343 596 387 626L419 476C359 442 304 428 230 428C68 428 6 497 6 578C6 647 53 694 145 720C226 743 255 758 255 779C255 800 220 807 178 807Z"/><path id="g17" d="M0 264V951H148L167 843C192 925 242 961 325 961C455 961 525 870 525 695C525 520 455 428 326 428C244 428 194 465 168 540V264ZM264 578C328 578 363 619 363 694C363 770 328 811 266 811C203 811 168 770 168 694V636C177 605 211 578 264 578Z"/><path id="g18" d="M328 783C314 793 288 799 258 799C234 799 210 795 190 787V599H318V454H190V336H89L21 464L-40 527V599H21V710C21 889 74 961 212 961C245 961 283 957 304 950Z"/><path id="g19" d="M426 438H0V590L220 585L0 871V951H426V799L206 804L426 518Z"/><path id="g20" d="M170 676H377V951H547V270H377V520H170V270H0V951H170Z"/><path id="g21" d="M338 961C548 961 674 833 674 611C674 388 548 260 338 260C126 260 0 388 0 611C0 831 126 961 338 961ZM172 611C172 485 229 420 338 420C445 420 502 485 502 611C502 736 445 801 338 801C229 801 172 736 172 611Z"/><path id="g22" d="M377 951 462 478 550 951H760L919 270H742L652 746L564 270H371L285 750L188 270H0L163 951Z"/><path id="g23" d="M170 270H0V951H170Z"/><path id="g24" d="M170 709H195C278 709 326 788 347 951H541C525 800 472 724 345 696C474 668 536 596 536 489C536 350 428 270 205 270H0V951H170ZM170 419 217 420C321 422 364 452 364 514C364 577 321 608 217 611L170 612Z"/><path id="g25" d="M170 659 367 951H569L333 611L569 270H379L170 592V270H0V951H170Z"/><path id="g26" d="M273 961C465 961 546 867 546 662V270H376V627C376 745 352 794 273 794C194 794 170 745 170 627V270H0V662C0 866 82 961 273 961Z"/><path id="g27" d="M312 961C384 961 469 946 529 904L497 745C451 780 403 801 341 801C235 801 172 736 172 611C172 485 233 420 328 420C384 420 444 443 493 476L525 317C472 280 399 260 316 260C109 260 0 388 0 611C0 831 99 961 312 961Z"/><path id="g28" d="M462 795 170 800V674H381V522H170V419L441 424V270H0V951H462Z"/><path id="g29" d="M158 517 389 951H582V270H415L424 704L193 270H0V951H166Z"/><path id="g30" d="M607 438 541 781 472 438H280L216 770L149 438H-40L102 951H303L371 600L441 951H642L780 438Z"/><path id="g31" d="M170 756H206C432 756 542 667 542 513C542 359 432 270 206 270H0V951H170ZM170 419 219 420C325 422 369 456 369 524C369 594 325 629 219 631L170 632Z"/><path id="g32" d="M353 802H262V270H159C99 322 50 345 0 345V512C30 512 60 503 92 475V802H0V951H353Z"/><path id="g33" d="M556 768C556 668 490 599 347 581C465 559 522 507 522 431C522 330 418 270 205 270H0V951H212C444 951 556 882 556 768ZM170 418 243 419C320 420 350 438 350 478C350 518 320 538 243 539L170 540ZM170 643 257 644C351 645 384 670 384 721C384 771 353 798 257 799L170 800Z"/><path id="g34" d="M313 951H482V610C482 479 423 428 336 428C259 428 201 468 167 573L147 438H0V951H168V638C199 609 216 600 248 600C287 600 313 615 313 683Z"/><path id="g35" d="M353 542C330 463 279 428 198 428C69 428 0 516 0 682C0 849 69 938 196 938C276 938 325 904 351 833V972C312 990 263 999 217 999C165 999 90 987 69 972L93 1127C131 1139 196 1149 258 1149C443 1149 519 1065 519 857V438H372ZM259 789C196 789 162 751 162 683C162 616 196 578 257 578C317 578 351 616 351 683V735C343 764 309 789 259 789Z"/><path id="g36" d="M-62 527V599H0V951H168V599H270V454H168L162 407C183 397 209 392 237 392C266 392 292 398 306 408L283 241C261 234 223 230 191 230C56 230 3 298 0 465Z"/><path id="g37" d="M38 478C108 441 167 423 236 423C303 423 342 441 342 486C342 529 307 556 202 601C72 658 0 746 0 848V951H520V785L175 792C196 764 239 734 313 710C449 665 518 585 518 468C518 336 429 260 258 260C172 260 81 279 0 326Z"/><path id="g38" d="M504 426C504 321 401 260 228 260C151 260 81 279 0 326L38 478C99 436 150 415 220 415H225C300 416 332 435 332 471C332 507 300 527 225 527H137V656H233C320 656 356 681 356 729C356 775 322 802 235 803H229C141 803 96 780 31 725L8 896C79 941 132 961 228 961C416 961 528 895 528 764C528 661 458 598 325 581C445 559 504 505 504 426Z"/><path id="g39" d="M213 951H383V712L599 270H427L307 560L190 270H0L213 717Z"/><path id="g40" d="M474 439H306V951H474ZM364 242C343 235 293 231 250 231C74 231 3 298 -1 465L-62 528V600H-1V951H167V600H269V454H167L162 412C196 400 241 393 288 393C334 393 374 399 388 409Z"/><path id="g41" d="M117 1054C158 1011 182 950 182 887C182 817 153 785 91 785C30 785 0 815 0 873C0 931 29 961 88 962C77 992 57 1023 26 1054Z"/><path id="g42" d="M267 270 0 712V814H336V951H506V814H577V681L506 682V522H336V685L185 688L453 270Z"/><path id="g43" d="M169 637C197 609 214 600 243 600C280 600 306 615 306 683V951H474V638C504 609 520 600 550 600C587 600 613 615 613 683V951H781V610C781 479 723 428 638 428C563 428 506 469 473 577C464 470 410 428 332 428C258 428 201 468 168 572L148 438H0V951H169Z"/><path id="g44" d="M441 795 170 800V270H0V951H441Z"/><path id="g45" d="M251 961C343 961 405 921 439 834L456 951H605V572H435V765C398 790 361 801 319 801C221 801 173 739 173 611C173 485 243 420 355 420C422 420 490 443 545 476L577 317C521 280 440 260 349 260C120 260 0 388 0 611C0 836 86 961 251 961Z"/><path id="g46" d="M91 962C152 962 183 932 183 873C183 815 152 785 91 785C31 785 0 815 0 873C0 932 31 962 91 962ZM424 962C485 962 516 932 516 873C516 815 485 785 424 785C364 785 333 815 333 873C333 932 364 962 424 962ZM757 962C818 962 849 932 849 873C849 815 818 785 757 785C697 785 666 815 666 873C666 932 697 962 757 962Z"/></defs></svg>
+
+<div class="top">
+  <div class="wrap">
+    <header class="bar">
+      <a href="/" aria-label="Pizza Perks, home"><img src="assets/img/logo.svg" width="569" height="89" alt="Pizza Perks"></a>
+      <nav aria-label="On this page">
+        <a href="#how">How it works</a>
+        <a href="#kitchens">Our kitchens</a>
+        <a href="#questions">Good to know</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <div>
+        <p class="eyebrow">Coming soon to iPhone and Android</p>
+        <h1><span class="l1"><span class="vh">Shop like you already do.</span><span class="st" aria-hidden="true" style="--h:0.955em;--g:0.145em"><svg class="w" viewBox="0 0 2220 955" style="width:2.220em"><use href="#g0" x="0" y="-206"/><use href="#g1" x="554" y="-206"/><use href="#g2" x="1085" y="-206"/><use href="#g3" x="1656" y="-206"/></svg><svg class="w" viewBox="0 0 1396 955" style="width:1.396em"><use href="#g4" x="0" y="-206"/><use href="#g5" x="208" y="-206"/><use href="#g6" x="416" y="-206"/><use href="#g7" x="899" y="-206"/></svg><svg class="w" viewBox="0 0 1533 955" style="width:1.533em"><use href="#g8" x="0" y="-206"/><use href="#g2" x="450" y="-206"/><use href="#g9" x="1021" y="-206"/></svg><svg class="w" viewBox="0 0 3203 955" style="width:3.203em"><use href="#g10" x="0" y="-206"/><use href="#g4" x="519" y="-206"/><use href="#g11" x="727" y="-206"/><use href="#g7" x="1110" y="-206"/><use href="#g10" x="1593" y="-206"/><use href="#g12" x="2110" y="-206"/><use href="#g8" x="2697" y="-206"/></svg><svg class="w" viewBox="0 0 1358 955" style="width:1.358em"><use href="#g12" x="0" y="-206"/><use href="#g2" x="572" y="-206"/><use href="#g13" x="1135" y="-206"/></svg></span></span> <span class="l2"><span class="vh">The cashback buys the pizza.</span><span class="st" aria-hidden="true" style="--h:0.955em;--g:0.145em"><svg class="w" viewBox="0 0 1576 955" style="width:1.576em"><use href="#g14" x="0" y="-206"/><use href="#g1" x="547" y="-206"/><use href="#g7" x="1079" y="-206"/></svg><svg class="w" viewBox="0 0 4032 955" style="width:4.032em"><use href="#g15" x="0" y="-206"/><use href="#g10" x="456" y="-206"/><use href="#g16" x="972" y="-206"/><use href="#g1" x="1444" y="-206"/><use href="#g17" x="1966" y="-206"/><use href="#g10" x="2515" y="-206"/><use href="#g15" x="3027" y="-206"/><use href="#g6" x="3495" y="-206"/></svg><svg class="w" viewBox="0 0 2038 955" style="width:2.038em"><use href="#g17" x="0" y="-206"/><use href="#g9" x="577" y="-206"/><use href="#g8" x="1110" y="-206"/><use href="#g16" x="1579" y="-206"/></svg><svg class="w" viewBox="0 0 1410 955" style="width:1.410em"><use href="#g18" x="0" y="-206"/><use href="#g1" x="381" y="-206"/><use href="#g7" x="913" y="-206"/></svg><svg class="w" viewBox="0 0 2487 955" style="width:2.487em"><use href="#g3" x="0" y="-206"/><use href="#g5" x="564" y="-206"/><use href="#g19" x="789" y="-206"/><use href="#g19" x="1255" y="-206"/><use href="#g10" x="1723" y="-206"/><use href="#g13" x="2264" y="-206"/></svg></span></span></h1>
+        <p class="lead">Buy online gift cards for shops you already use. Cashback builds your reward. Spend it on pizza from our London kitchens.</p>
+        <div class="cta">
+          <a class="btn btn-yellow" href="#how"><span class="vh">How it works</span><span class="st" aria-hidden="true" style="--h:0.725em;--g:0.375em"><svg class="w" viewBox="0 0 2214 725" style="width:2.214em"><use href="#g20" x="0" y="-248"/><use href="#g21" x="587" y="-248"/><use href="#g22" x="1255" y="-248"/></svg><svg class="w" viewBox="0 0 757 725" style="width:0.757em"><use href="#g23" x="0" y="-248"/><use href="#g14" x="210" y="-248"/></svg><svg class="w" viewBox="0 0 3342 725" style="width:3.342em"><use href="#g22" x="0" y="-248"/><use href="#g21" x="916" y="-248"/><use href="#g24" x="1630" y="-248"/><use href="#g25" x="2211" y="-248"/><use href="#g0" x="2788" y="-248"/></svg></span></a>
+          <a class="btn btn-ghost" href="#kitchens"><span class="vh">Our kitchens</span><span class="st" aria-hidden="true" style="--h:0.725em;--g:0.375em"><svg class="w" viewBox="0 0 1904 725" style="width:1.904em"><use href="#g21" x="0" y="-248"/><use href="#g26" x="737" y="-248"/><use href="#g24" x="1323" y="-248"/></svg><svg class="w" viewBox="0 0 4161 725" style="width:4.161em"><use href="#g25" x="0" y="-248"/><use href="#g23" x="597" y="-248"/><use href="#g14" x="807" y="-248"/><use href="#g27" x="1309" y="-248"/><use href="#g20" x="1896" y="-248"/><use href="#g28" x="2483" y="-248"/><use href="#g29" x="2985" y="-248"/><use href="#g0" x="3607" y="-248"/></svg></span></a>
+        </div>
+      </div>
+      <div class="phone">
+        <img src="assets/img/app-home.webp" width="780" height="1688" alt="The Pizza Perks app’s Home screen: a reward of £11.88, and a note that the next free pizza is £4.12 away.">
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="on-light">
+  <section class="sec" id="how">
+    <div class="wrap">
+      <div class="sec-head center">
+        <h2><span class="vh">How Pizza Perks works</span><span class="st" aria-hidden="true" style="--h:0.767em;--g:0.333em"><svg class="w" viewBox="0 0 1970 767" style="width:1.970em"><use href="#g20" x="0" y="-206"/><use href="#g2" x="597" y="-206"/><use href="#g30" x="1150" y="-206"/></svg><svg class="w" viewBox="0 0 2286 767" style="width:2.286em"><use href="#g31" x="0" y="-206"/><use href="#g5" x="586" y="-206"/><use href="#g19" x="811" y="-206"/><use href="#g19" x="1277" y="-206"/><use href="#g10" x="1745" y="-206"/></svg><svg class="w" viewBox="0 0 2429 767" style="width:2.429em"><use href="#g31" x="0" y="-206"/><use href="#g7" x="554" y="-206"/><use href="#g11" x="1055" y="-206"/><use href="#g6" x="1461" y="-206"/><use href="#g16" x="1970" y="-206"/></svg><svg class="w" viewBox="0 0 2715 767" style="width:2.715em"><use href="#g30" x="0" y="-206"/><use href="#g2" x="770" y="-206"/><use href="#g11" x="1341" y="-206"/><use href="#g6" x="1747" y="-206"/><use href="#g16" x="2256" y="-206"/></svg></span></h2>
+        <p>The app is free, with no subscription and no fees.</p>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <div class="num" aria-hidden="true"><span class="vh">1</span><span class="st" aria-hidden="true" style="--h:0.705em;--g:0.395em"><svg class="w" viewBox="0 0 393 705" style="width:0.393em"><use href="#g32" x="0" y="-258"/></svg></span></div>
+          <h3><span class="vh">Buy an online gift card</span><span class="st" aria-hidden="true" style="--h:0.955em;--g:0.145em"><svg class="w" viewBox="0 0 1632 955" style="width:1.632em"><use href="#g33" x="0" y="-206"/><use href="#g9" x="593" y="-206"/><use href="#g8" x="1126" y="-206"/></svg><svg class="w" viewBox="0 0 1050 955" style="width:1.050em"><use href="#g10" x="0" y="-206"/><use href="#g34" x="528" y="-206"/></svg><svg class="w" viewBox="0 0 2538 955" style="width:2.538em"><use href="#g2" x="0" y="-206"/><use href="#g34" x="571" y="-206"/><use href="#g4" x="1093" y="-206"/><use href="#g5" x="1301" y="-206"/><use href="#g34" x="1509" y="-206"/><use href="#g7" x="2041" y="-206"/></svg><svg class="w" viewBox="0 0 1520 955" style="width:1.520em"><use href="#g35" x="0" y="-206"/><use href="#g5" x="559" y="-206"/><use href="#g36" x="819" y="-206"/><use href="#g18" x="1152" y="-206"/></svg><svg class="w" viewBox="0 0 1936 955" style="width:1.936em"><use href="#g15" x="0" y="-206"/><use href="#g10" x="456" y="-206"/><use href="#g11" x="984" y="-206"/><use href="#g12" x="1371" y="-206"/></svg></span></h3>
+          <p>Pick a shop you already use and choose an amount. Nothing comes in the post, and you get the full value to spend at that shop.</p>
+        </li>
+        <li class="step">
+          <div class="num" aria-hidden="true"><span class="vh">2</span><span class="st" aria-hidden="true" style="--h:0.715em;--g:0.385em"><svg class="w" viewBox="0 0 560 715" style="width:0.560em"><use href="#g37" x="0" y="-248"/></svg></span></div>
+          <h3><span class="vh">Cashback builds your reward</span><span class="st" aria-hidden="true" style="--h:0.955em;--g:0.145em"><svg class="w" viewBox="0 0 4127 955" style="width:4.127em"><use href="#g27" x="0" y="-206"/><use href="#g10" x="551" y="-206"/><use href="#g16" x="1067" y="-206"/><use href="#g1" x="1539" y="-206"/><use href="#g17" x="2061" y="-206"/><use href="#g10" x="2610" y="-206"/><use href="#g15" x="3122" y="-206"/><use href="#g6" x="3590" y="-206"/></svg><svg class="w" viewBox="0 0 2552 955" style="width:2.552em"><use href="#g17" x="0" y="-206"/><use href="#g9" x="577" y="-206"/><use href="#g5" x="1089" y="-206"/><use href="#g4" x="1297" y="-206"/><use href="#g12" x="1519" y="-206"/><use href="#g16" x="2093" y="-206"/></svg><svg class="w" viewBox="0 0 1944 955" style="width:1.944em"><use href="#g8" x="0" y="-206"/><use href="#g2" x="450" y="-206"/><use href="#g9" x="1021" y="-206"/><use href="#g11" x="1533" y="-206"/></svg><svg class="w" viewBox="0 0 3147 955" style="width:3.147em"><use href="#g11" x="0" y="-206"/><use href="#g7" x="383" y="-206"/><use href="#g30" x="885" y="-206"/><use href="#g10" x="1667" y="-206"/><use href="#g11" x="2195" y="-206"/><use href="#g12" x="2582" y="-206"/></svg></span></h3>
+          <p>Each retailer shows the cashback it pays before you buy. It joins your reward as soon as your gift card arrives, normally within seconds.</p>
+        </li>
+        <li class="step">
+          <div class="num" aria-hidden="true"><span class="vh">3</span><span class="st" aria-hidden="true" style="--h:0.725em;--g:0.375em"><svg class="w" viewBox="0 0 568 725" style="width:0.568em"><use href="#g38" x="0" y="-248"/></svg></span></div>
+          <h3><span class="vh">Your pizza fills up, slice by slice</span><span class="st" aria-hidden="true" style="--h:0.955em;--g:0.145em"><svg class="w" viewBox="0 0 1973 955" style="width:1.973em"><use href="#g39" x="0" y="-206"/><use href="#g2" x="479" y="-206"/><use href="#g9" x="1050" y="-206"/><use href="#g11" x="1562" y="-206"/></svg><svg class="w" viewBox="0 0 2264 955" style="width:2.264em"><use href="#g3" x="0" y="-206"/><use href="#g5" x="564" y="-206"/><use href="#g19" x="789" y="-206"/><use href="#g19" x="1255" y="-206"/><use href="#g10" x="1723" y="-206"/></svg><svg class="w" viewBox="0 0 1399 955" style="width:1.399em"><use href="#g40" x="0" y="-206"/><use href="#g4" x="514" y="-206"/><use href="#g4" x="722" y="-206"/><use href="#g16" x="940" y="-206"/></svg><svg class="w" viewBox="0 0 1298 955" style="width:1.298em"><use href="#g9" x="0" y="-206"/><use href="#g3" x="512" y="-206"/><use href="#g41" x="1076" y="-206"/></svg><svg class="w" viewBox="0 0 1838 955" style="width:1.838em"><use href="#g16" x="0" y="-206"/><use href="#g4" x="472" y="-206"/><use href="#g5" x="680" y="-206"/><use href="#g15" x="895" y="-206"/><use href="#g7" x="1341" y="-206"/></svg><svg class="w" viewBox="0 0 1059 955" style="width:1.059em"><use href="#g17" x="0" y="-206"/><use href="#g8" x="553" y="-206"/></svg><svg class="w" viewBox="0 0 1838 955" style="width:1.838em"><use href="#g16" x="0" y="-206"/><use href="#g4" x="472" y="-206"/><use href="#g5" x="680" y="-206"/><use href="#g15" x="895" y="-206"/><use href="#g7" x="1341" y="-206"/></svg></span></h3>
+          <p>Every gift card fills it a little more. Your reward doesn’t expire, and you can spend it on any order, however much or little you have.</p>
+        </li>
+        <li class="step">
+          <div class="num" aria-hidden="true"><span class="vh">4</span><span class="st" aria-hidden="true" style="--h:0.705em;--g:0.395em"><svg class="w" viewBox="0 0 617 705" style="width:0.617em"><use href="#g42" x="0" y="-258"/></svg></span></div>
+          <h3><span class="vh">Your reward pays for the pizza</span><span class="st" aria-hidden="true" style="--h:0.955em;--g:0.145em"><svg class="w" viewBox="0 0 1973 955" style="width:1.973em"><use href="#g39" x="0" y="-206"/><use href="#g2" x="479" y="-206"/><use href="#g9" x="1050" y="-206"/><use href="#g11" x="1562" y="-206"/></svg><svg class="w" viewBox="0 0 3147 955" style="width:3.147em"><use href="#g11" x="0" y="-206"/><use href="#g7" x="383" y="-206"/><use href="#g30" x="885" y="-206"/><use href="#g10" x="1667" y="-206"/><use href="#g11" x="2195" y="-206"/><use href="#g12" x="2582" y="-206"/></svg><svg class="w" viewBox="0 0 1952 955" style="width:1.952em"><use href="#g3" x="0" y="-206"/><use href="#g10" x="548" y="-206"/><use href="#g8" x="1024" y="-206"/><use href="#g16" x="1493" y="-206"/></svg><svg class="w" viewBox="0 0 1258 955" style="width:1.258em"><use href="#g36" x="0" y="-206"/><use href="#g2" x="276" y="-206"/><use href="#g11" x="847" y="-206"/></svg><svg class="w" viewBox="0 0 1410 955" style="width:1.410em"><use href="#g18" x="0" y="-206"/><use href="#g1" x="381" y="-206"/><use href="#g7" x="913" y="-206"/></svg><svg class="w" viewBox="0 0 2264 955" style="width:2.264em"><use href="#g3" x="0" y="-206"/><use href="#g5" x="564" y="-206"/><use href="#g19" x="789" y="-206"/><use href="#g19" x="1255" y="-206"/><use href="#g10" x="1723" y="-206"/></svg></span></h3>
+          <p>Choose a London kitchen and order for pickup or delivery. Your reward comes off the bill, delivery included, and anything left is paid by card.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec" id="kitchens">
+    <div class="wrap">
+      <div class="kitchens">
+        <div>
+          <h2><span class="vh">Pizza from our London kitchens</span><span class="st" aria-hidden="true" style="--h:0.767em;--g:0.333em"><svg class="w" viewBox="0 0 2286 767" style="width:2.286em"><use href="#g31" x="0" y="-206"/><use href="#g5" x="586" y="-206"/><use href="#g19" x="811" y="-206"/><use href="#g19" x="1277" y="-206"/><use href="#g10" x="1745" y="-206"/></svg><svg class="w" viewBox="0 0 2080 767" style="width:2.080em"><use href="#g36" x="0" y="-206"/><use href="#g11" x="306" y="-206"/><use href="#g2" x="688" y="-206"/><use href="#g43" x="1259" y="-206"/></svg><svg class="w" viewBox="0 0 1494 767" style="width:1.494em"><use href="#g2" x="0" y="-206"/><use href="#g9" x="571" y="-206"/><use href="#g11" x="1083" y="-206"/></svg><svg class="w" viewBox="0 0 3221 767" style="width:3.221em"><use href="#g44" x="0" y="-206"/><use href="#g2" x="449" y="-206"/><use href="#g34" x="1020" y="-206"/><use href="#g12" x="1556" y="-206"/><use href="#g2" x="2128" y="-206"/><use href="#g34" x="2699" y="-206"/></svg><svg class="w" viewBox="0 0 3608 767" style="width:3.608em"><use href="#g6" x="0" y="-206"/><use href="#g5" x="524" y="-206"/><use href="#g18" x="765" y="-206"/><use href="#g15" x="1113" y="-206"/><use href="#g1" x="1586" y="-206"/><use href="#g7" x="2118" y="-206"/><use href="#g34" x="2619" y="-206"/><use href="#g16" x="3149" y="-206"/></svg></span></h2>
+          <p class="say">Spend your reward at any of our three pizzerias, for pickup or delivery.</p>
+        </div>
+        <ul class="brands">
+          <li><img src="assets/img/basilico.png" width="256" height="256" alt="" loading="lazy">Basilico Pizza</li>
+          <li><img src="assets/img/protein.png" width="256" height="256" alt="" loading="lazy">Protein Pizza</li>
+          <li><img src="assets/img/goat.png" width="256" height="256" alt="" loading="lazy">Goat Pizza</li>
+        </ul>
+        <div class="areas">
+          <p>You’ll find us in</p>
+          <ul class="chips">
+            <li>Commercial Road</li>
+            <li>Crouch End</li>
+            <li>East Sheen</li>
+            <li>Finchley</li>
+            <li>Fulham Road</li>
+            <li>Hampstead</li>
+            <li>Islington</li>
+            <li>Lavender Hill</li>
+            <li>Marylebone</li>
+            <li>Tower Bridge</li>
+          </ul>
+          <p class="note">Pizza Perks kitchens are in London for now, so that is where your reward can be spent.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="questions">
+    <div class="wrap">
+      <div class="sec-head center">
+        <h2><span class="vh">Good to know</span><span class="st" aria-hidden="true" style="--h:0.725em;--g:0.375em"><svg class="w" viewBox="0 0 2348 725" style="width:2.348em"><use href="#g45" x="0" y="-248"/><use href="#g2" x="652" y="-248"/><use href="#g2" x="1216" y="-248"/><use href="#g12" x="1783" y="-248"/></svg><svg class="w" viewBox="0 0 909 725" style="width:0.909em"><use href="#g18" x="0" y="-248"/><use href="#g2" x="346" y="-248"/></svg><svg class="w" viewBox="0 0 2426 725" style="width:2.426em"><use href="#g6" x="0" y="-248"/><use href="#g34" x="522" y="-248"/><use href="#g2" x="1053" y="-248"/><use href="#g30" x="1606" y="-248"/></svg></span></h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Does it cost anything to use?</summary>
+          <p>No. The app is free, with no subscription and no fees. You pay the value of the gift card you buy, nothing on top, and you get the full value to spend at that retailer.</p>
+        </details>
+        <details>
+          <summary>How much cashback will I earn?</summary>
+          <p>Each retailer pays its own rate. It is shown before you buy, and once you choose an amount the app shows what you’ll earn back, before you pay.</p>
+        </details>
+        <details>
+          <summary>Are the gift cards genuine?</summary>
+          <p>Yes. Each gift card is made new, for you, when your payment goes through. It is for the full amount you paid, and it is spent like any other gift card from that retailer, under the retailer’s own terms.</p>
+        </details>
+        <details>
+          <summary>Does my reward expire?</summary>
+          <p>No. Your reward doesn’t expire, and there’s no deadline for spending it. It stays on your account for as long as the account is open.</p>
+        </details>
+        <details>
+          <summary>Can I take my reward as cash?</summary>
+          <p>No. Your reward is a discount on food from our kitchens. It isn’t money, so it can’t be withdrawn, exchanged for cash or moved to another account.</p>
+        </details>
+        <details>
+          <summary>Can I use Pizza Perks if I don’t live in London?</summary>
+          <p>Partly. You can buy gift cards and earn cashback wherever you live, but your reward can only be spent at our London kitchens for now: you collect from one, or have your order delivered if you’re inside its delivery area.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="soon center" aria-labelledby="soon-h">
+      <h2 id="soon-h"><span class="vh">The app is on its way…</span><span class="st" aria-hidden="true" style="--h:0.955em;--g:0.145em"><svg class="w" viewBox="0 0 1576 955" style="width:1.576em"><use href="#g14" x="0" y="-206"/><use href="#g1" x="547" y="-206"/><use href="#g7" x="1079" y="-206"/></svg><svg class="w" viewBox="0 0 1670 955" style="width:1.670em"><use href="#g10" x="0" y="-206"/><use href="#g3" x="530" y="-206"/><use href="#g3" x="1106" y="-206"/></svg><svg class="w" viewBox="0 0 667 955" style="width:0.667em"><use href="#g5" x="0" y="-206"/><use href="#g16" x="208" y="-206"/></svg><svg class="w" viewBox="0 0 1093 955" style="width:1.093em"><use href="#g2" x="0" y="-206"/><use href="#g34" x="571" y="-206"/></svg><svg class="w" viewBox="0 0 1067 955" style="width:1.067em"><use href="#g5" x="0" y="-206"/><use href="#g18" x="241" y="-206"/><use href="#g16" x="608" y="-206"/></svg><svg class="w" viewBox="0 0 2764 955" style="width:2.764em"><use href="#g30" x="0" y="-206"/><use href="#g10" x="782" y="-206"/><use href="#g8" x="1258" y="-206"/><use href="#g46" x="1764" y="-206"/></svg></span></h2>
+      <p>Pizza Perks is coming soon to iPhone and Android.</p>
+      <p>A question in the meantime? Email <a href="mailto:support@yourpizzaperks.com">support@yourpizzaperks.com</a></p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <img src="assets/img/logo-green.svg" width="668" height="188" alt="Pizza Perks">
+        <p>The Pizza Perks app is provided by Basilico Limited.<br>
+        Registered in England and Wales, company number 03518034.<br>
+        Registered office: Linden Building A 8-9 Regent Park, Booth Drive, Park Farm Industrial Estate, Wellingborough, Northamptonshire, England, NN8 6GR.<br>
+        VAT number GB 719 0604 45.</p>
+      </div>
+      <ul>
+        <li><a href="https://pizzaperks-backend-prod.fly.dev/terms">Terms and conditions</a></li>
+        <li><a href="https://pizzaperks-backend-prod.fly.dev/privacy">Privacy policy</a></li>
+        <li><a href="mailto:support@yourpizzaperks.com">support@yourpizzaperks.com</a></li>
+      </ul>
+    </div>
+    <p class="small">You must be 18 or over to use the app. © 2026 Basilico Limited.</p>
+  </div>
+</footer>
+</body>
+</html>
