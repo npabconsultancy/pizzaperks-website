@@ -7,6 +7,7 @@ The one-page site at https://yourpizzaperks.com, served by GitHub Pages from the
 | | |
 |---|---|
 | `index.html`, `404.html` | The pages GitHub Pages serves. Built files: do not edit them by hand. |
+| `terms.html`, `privacy.html` | The terms and the privacy policy, at `/terms` and `/privacy`. Built files too: see below. |
 | `assets/` | Images and the body font (DM Sans, SIL Open Font Licence). |
 | `CNAME` | Tells GitHub Pages the site's domain. |
 | `_build/` | The page templates and the script that builds them. GitHub Pages does not serve folders that start with an underscore. |
@@ -28,6 +29,16 @@ node _build/serve.js
 ```
 
 then open http://localhost:8765.
+
+## The terms and the privacy policy
+
+Their wording is the app's, and is not written here. The build copies the two finished pages from the backend, at `../backend/src/main/resources/static/` (set `LEGAL_PAGES` to use another folder), and adds only the page's address on this site, the site's icon and a link back to the home page. So to change the wording, change it in the app and the backend first, then rebuild here and publish.
+
+To see whether the built pages are up to date without writing anything:
+
+```bash
+python3 _build/build.py --check
+```
 
 ## Wording
 

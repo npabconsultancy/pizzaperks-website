@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """
-Builds ../index.html (and ../404.html) from the templates in this folder.
+Builds ../index.html (and ../404.html) from the templates in this folder, and
+copies ../terms.html and ../privacy.html from the backend (see further down).
 
     python3 _build/build.py        (needs: pip install fonttools uharfbuzz)
+    python3 _build/build.py --check    writes nothing: says whether the built
+                                       pages are up to date
 
 Why there is a build step at all: the brand's display face, Seatren, is what
 makes a Pizza Perks heading look like one, but the font file is licensed
@@ -43,8 +46,21 @@ PAGES = {"template.html": "index.html", "404.template.html": "404.html"}
 PAD = 12  # font units of air above and below the tallest and deepest letter
 LINE_PITCH = 1.1  # em from one wrapped line of a heading to the next
 
+# The terms and the privacy policy are not written in this repository. Their
+# wording belongs to the app (PizzaPerksRN/src/content), and the backend holds
+# it as two finished web pages. They are copied from there, so the site cannot
+# come to say something the app does not. Set LEGAL_PAGES to read them from
+# somewhere else.
+LEGAL_FROM = Path(os.environ.get("LEGAL_PAGES", ROOT.parent / "backend/src/main/resources/static"))
+LEGAL = {"terms.html": "terms", "privacy.html": "privacy"}
+SITE = "https://yourpizzaperks.com"
+CHECK = "--check" in sys.argv[1:]
+
 if not FONT.exists():
     sys.exit(f"font not found: {FONT}  (set SEATREN_OTF)")
+for name in LEGAL:
+    if not (LEGAL_FROM / name).exists():
+        sys.exit(f"legal page not found: {LEGAL_FROM / name}  (set LEGAL_PAGES)")
 
 tt = TTFont(str(FONT))
 UPM = tt["head"].unitsPerEm
@@ -126,6 +142,27 @@ def glyph_defs():
     return "".join(out)
 
 
+stale = []  # with --check: the built pages that are not what a build would write
+
+
+def emit(dest, page, note):
+    """Write a built page; with --check, only note whether the one there differs."""
+    at = ROOT / dest
+    if CHECK:
+        if not at.exists() or at.read_text(encoding="utf-8") != page:
+            stale.append(dest)
+        return
+    at.write_text(page, encoding="utf-8")
+    print(f"{dest}: {len(page.encode()):,} bytes, {note}")
+
+
+def once(page, name, old, new):
+    """Replace the one place `old` appears; anything else is a page we do not know."""
+    if page.count(old) != 1:
+        sys.exit(f"{name}: expected one {old!r} in the backend's page, found {page.count(old)}")
+    return page.replace(old, new)
+
+
 for src, dest in PAGES.items():
     used.clear()
     page = (HERE / src).read_text(encoding="utf-8")
@@ -134,5 +171,22 @@ for src, dest in PAGES.items():
     left = re.findall(r"\{\{[^}]*\}\}", page)
     if left:
         sys.exit(f"{src}: unresolved placeholders {left}")
-    (ROOT / dest).write_text(page, encoding="utf-8")
-    print(f"{dest}: {len(page.encode()):,} bytes, {len(used)} letters drawn")
+    emit(dest, page, f"{len(used)} letters drawn")
+
+# The two legal pages: the backend's own, word for word, with three additions
+# for standing on this domain: the page's address here, the site's icon, and a
+# way back to the home page. Their links to each other (/terms, /privacy) are
+# already right for this site. A page that is not shaped as expected stops the
+# build, so a change in the backend cannot slip through half applied.
+for name, slug in LEGAL.items():
+    page = (LEGAL_FROM / name).read_text(encoding="utf-8")
+    page = once(page, name, "</title>\n",
+                f'</title>\n<link rel="canonical" href="{SITE}/{slug}">\n'
+                '<link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">\n')
+    page = once(page, name, "<nav>", '<nav><a href="/">Home</a> &nbsp;·&nbsp; ')
+    emit(name, page, f"copied from {LEGAL_FROM.parent.name}/{LEGAL_FROM.name}/")
+
+if CHECK:
+    if stale:
+        sys.exit("out of date: " + ", ".join(stale) + "  (run python3 _build/build.py)")
+    print("every built page is up to date")

@@ -1,7 +1,8 @@
 // Local preview of the built site:  node _build/serve.js [port]
 // Serves the repository root the way GitHub Pages does, near enough: static
-// files, index.html for a folder, 404.html for anything missing, and nothing
-// from _build/ itself. No dependencies.
+// files, index.html for a folder, a page without its ".html" (/privacy is
+// privacy.html), 404.html for anything missing, and nothing from _build/
+// itself. No dependencies.
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
@@ -18,6 +19,7 @@ http.createServer((req, res) => {
   let rel = decodeURIComponent(new URL(req.url, 'http://x').pathname);
   if (rel.endsWith('/')) rel += 'index.html';
   let file = path.join(ROOT, rel);
+  if (!path.extname(rel) && fs.existsSync(file + '.html')) file += '.html';
   const hidden = rel.split('/').some(part => part.startsWith('_') || part.startsWith('.'));
   let status = 200;
   if (hidden || !file.startsWith(ROOT) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) {
